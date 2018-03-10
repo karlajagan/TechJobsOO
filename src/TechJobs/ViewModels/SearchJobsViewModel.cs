@@ -15,7 +15,7 @@ namespace TechJobs.ViewModels
         public List<Job> Jobs { get; set; }
 
         // The column to search, defaults to all
-        public JobFieldType Column { get; set; } = JobFieldType.All;
+        public override JobFieldType Column { get; set; } = JobFieldType.All;
 
         // The search value
         [Display(Name = "Keyword:")]

@@ -13,6 +13,10 @@ namespace TechJobs.ViewModels
 
         // View title
         public string Title { get; set; } = "";
+ 
+        // The current column
+        public virtual JobFieldType Column { get; set; }
+
 
         public BaseViewModel()
         {
