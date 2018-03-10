@@ -24,6 +24,7 @@ namespace TechJobs.Data
         }
 
         private static JobData instance;
+
         public static JobData GetInstance()
         {
             if (instance == null)
@@ -87,8 +88,6 @@ namespace TechJobs.Data
 
             throw new ArgumentException("Cannot get field of type: " + type);
         }
-
-
         /**
          * Returns the Job with the given ID,
          * if it exists in the store
