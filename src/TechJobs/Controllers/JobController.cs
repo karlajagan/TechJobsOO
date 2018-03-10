@@ -3,6 +3,7 @@ using TechJobs.Data;
 using TechJobs.Models;
 using TechJobs.ViewModels;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace TechJobs.Controllers
@@ -12,7 +13,7 @@ namespace TechJobs.Controllers
 
         // Our reference to the data store
         private static JobData jobData;
-
+       
         static JobController()
         {
             jobData = JobData.GetInstance();
@@ -40,8 +41,27 @@ namespace TechJobs.Controllers
             // new Job and add it to the JobData data store. Then
             // redirect to the Job detail (Index) action/view for the new Job.
 
+            
+            if (ModelState.IsValid)
+            {
+                Employer anEmployer = jobData.Employers.Find(newJobViewModel.EmployerID);
+                Location aLocation = jobData.Locations.Find(newJobViewModel.LocationID);
+                PositionType aPosition = jobData.PositionTypes.Find(newJobViewModel.PositionTypeID);
+                CoreCompetency aCoreCompetency = jobData.CoreCompetencies.Find(newJobViewModel.CoreCompetenciesID);
 
+                Job job = new Job
+                {
+                    Name = newJobViewModel.Name,
+                    Employer = anEmployer,
+                    Location = aLocation,
+                    PositionType = aPosition,
+                    CoreCompetency = aCoreCompetency
+                };
+                jobData.Jobs.Add(job);
 
+                return Redirect(string.Format("/Job?id={0}",job.ID));
+
+            }
             return View(newJobViewModel);
         }
     }

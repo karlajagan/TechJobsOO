@@ -29,10 +29,11 @@ namespace TechJobs.ViewModels
         [Display(Name = "Position Type")]
         public int PositionTypeID { get; set; }
        
-       public List<SelectListItem> Employers { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> Employers { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> Locations { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> CoreCompetencies { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> PositionTypes { get; set; } = new List<SelectListItem>();
+        public object Employer { get; internal set; }
 
         public NewJobViewModel()
         {
